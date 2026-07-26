@@ -11,6 +11,7 @@ def hello_world():
             <li><a href="/db_test">db_test</a></li>
             <li><a href="/db_create">db_create</a></li>
             <li><a href="/db_insert">db_insert</a></li>
+            <li><a href="/db_select">db_select</a></li>
         </ul>
     '''
 
