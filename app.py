@@ -56,4 +56,25 @@ def db_insert():
         return "Basketball Table Populated"
     except Exception as e:
         return f"Database Error: {e}"
+
+
+@app.route("/db_select")
+def db_select():
+    try:
+        sql = "SELECT * FROM Basketball;"
+        records = run_sql(sql, fetch=True)
+        html = "<table border='1'>"
+        html += "<tr><th>First</th><th>Last</th><th>City</th><th>Name</th><th>Number</th></tr>"
+        
+        for row in records:
+            html += "<tr>"
+            for value in row:
+                html += f"<td>{value}</td>"
+            html += "</tr>"
+        
+        html += "</table>"
+        return html
+    except Exception as e:
+        return f"Database Error: {e}"
+
     
