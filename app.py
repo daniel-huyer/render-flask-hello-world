@@ -9,7 +9,7 @@ def hello_world():
         <p>Hello World from Daniel Huyer in 3308</p>
         <ul>
             <li><a href="/db_test">db_test</a></li>
-            <li>a href="/db_create">db_create</a></li>
+            <li><a href="/db_create">db_create</a></li>
             <li><a href="/db_insert">db_insert</a></li>
         </ul>
     '''
