@@ -13,6 +13,7 @@ def hello_world():
             <li><a href="/db_insert">db_insert</a></li>
             <li><a href="/db_select">db_select</a></li>
         </ul>
+        <p>/db_create should run before /db_insert, and /db_insert should run before /db_select</p>
     '''
 
 @app.route("/db_test")
@@ -20,7 +21,10 @@ def db_test():
     conn = None
     try:
         run_sql("SELECT 1;")
-        return "Database connection successful"
+        return """
+            <p>Database connection successful</p>
+            <a href="/db_create">Next: /db_create</a>
+        """
     except Exception as e:
         return f"Database connection failed: {e}"
 
@@ -28,8 +32,9 @@ def db_test():
 @app.route("/db_create")
 def db_create():
     try:
+        ''' added drop before create intentionally '''
         run_sql("""
-            DROP TABLE IF EXISTS Basketball;
+            DROP TABLE IF EXISTS Basketball;  
             CREATE TABLE IF NOT EXISTS Basketball(
                 First varchar(255),
                 Last varchar(255),
@@ -38,7 +43,10 @@ def db_create():
                 Number int
             );
         """)
-        return "Basketball Table Successfully Created"
+        return """
+            <p>Basketball Table Successfully Created</p>
+            <a href="/db_insert">Next: /db_insert</a>
+        """
     except Exception as e:
         return f"Database Error: {e}"
 
@@ -55,7 +63,10 @@ def db_insert():
             ('Kawhi', 'Leonard', 'Los Angeles', 'Clippers', 2),
             ('Daniel', 'Huyer', 'CU Boulder', 'WhiteHats', 3308);
         """)
-        return "Basketball Table Populated"
+        return """
+            <p>Basketball Table Populated</p>
+            <a href="/db_select">Next: /db_select</a>
+        """
     except Exception as e:
         return f"Database Error: {e}"
 
@@ -75,7 +86,23 @@ def db_select():
             html += "</tr>"
         
         html += "</table>"
-        return html
+        return f"""
+            {html}
+            <a href="/db_drop">Reset table and contents: /db_drop</a>
+        """
+    except Exception as e:
+        return f"Database Error: {e}"
+
+@app.route("/db_drop")
+def db_drop():
+    try:
+        run_sql("""
+            DROP TABLE IF EXISTS Basketball;
+        """)
+        return """
+            <p>Basketball Table Dropped</p>
+            <a href="/">Home</a>
+        """
     except Exception as e:
         return f"Database Error: {e}"
 
