@@ -29,6 +29,7 @@ def db_test():
 def db_create():
     try:
         run_sql("""
+            DROP TABLE IF EXISTS Basketball;
             CREATE TABLE IF NOT EXISTS Basketball(
                 First varchar(255),
                 Last varchar(255),
@@ -52,7 +53,7 @@ def db_insert():
             ('Stephen', 'Curry', 'San Francisco', 'Warriors', 30),
             ('Nikola', 'Jokic', 'Denver', 'Nuggets', 15),
             ('Kawhi', 'Leonard', 'Los Angeles', 'Clippers', 2),
-            ('YOUR_FIRST_NAME', 'YOUR_LAST_NAME', 'CU Boulder', 'YOUR_TEAM_OR_LABEL', 3308);
+            ('Daniel', 'Huyer', 'CU Boulder', 'WhiteHats', 3308);
         """)
         return "Basketball Table Populated"
     except Exception as e:
