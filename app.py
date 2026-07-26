@@ -11,10 +11,7 @@ def hello_world():
 def db_test():
     conn = None
     try:
-        conn = psycopg2.connect(DATABASE_URL)
+        run_sql("SELECT *;")
         return "Database connection successful"
     except Exception as e:
         return f"Database connection failed: {e}"
-    finally:
-        if conn is not None:
-            conn.close()
