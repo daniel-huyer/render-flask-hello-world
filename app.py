@@ -12,6 +12,7 @@ def hello_world():
             <li><a href="/db_create">db_create</a></li>
             <li><a href="/db_insert">db_insert</a></li>
             <li><a href="/db_select">db_select</a></li>
+            <li><a href="/db_drop">db_drop</a></li>
         </ul>
         <p>/db_create should run before /db_insert, and /db_insert should run before /db_select</p>
     '''
