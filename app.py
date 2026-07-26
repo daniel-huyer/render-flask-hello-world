@@ -11,7 +11,7 @@ def hello_world():
 def db_test():
     conn = None
     try:
-        run_sql("SELECT *;")
+        run_sql("SELECT 1;")
         return "Database connection successful"
     except Exception as e:
         return f"Database connection failed: {e}"
