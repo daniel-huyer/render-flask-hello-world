@@ -7,14 +7,13 @@ app = Flask(__name__)
 def hello_world():
     return '''
         <p>Hello World from Daniel Huyer in 3308</p>
-        <ul>
+        <ol>
             <li><a href="/db_test">db_test</a></li>
             <li><a href="/db_create">db_create</a></li>
             <li><a href="/db_insert">db_insert</a></li>
             <li><a href="/db_select">db_select</a></li>
             <li><a href="/db_drop">db_drop</a></li>
-        </ul>
-        <p>/db_create should run before /db_insert, and /db_insert should run before /db_select</p>
+        </ol>
     '''
 
 @app.route("/db_test")
